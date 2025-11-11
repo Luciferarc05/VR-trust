@@ -2,11 +2,13 @@ name: Deploy Next.js (export) to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -20,13 +22,11 @@ jobs:
         working-directory: ./new-trust-main
         run: npm install
 
-      - name: Build Next.js project
+      - name: Build and export project
         working-directory: ./new-trust-main
-        run: npm run build
-
-      - name: Export static files
-        working-directory: ./new-trust-main
-        run: npm run export
+        run: |
+          npm run build
+          npm run export
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
