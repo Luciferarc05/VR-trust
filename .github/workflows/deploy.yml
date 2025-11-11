@@ -20,13 +20,16 @@ jobs:
         working-directory: ./new-trust-main
         run: npm install
 
-      - name: Build project
+      - name: Build Next.js project
         working-directory: ./new-trust-main
         run: npm run build
+
+      - name: Export static files
+        working-directory: ./new-trust-main
+        run: npm run export
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./new-trust-main/out
-
