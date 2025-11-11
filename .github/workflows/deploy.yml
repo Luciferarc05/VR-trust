@@ -10,34 +10,27 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Use Node.js 18
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      # Install, build, and export from the frontend folder
       - name: Install dependencies
-        working-directory: new-trust-main
-        run: npm install
+        run: npm ci
 
-      - name: Build
-        working-directory: new-trust-main
+      - name: Build the project
         run: npm run build
 
-      - name: Export static site
-        working-directory: new-trust-main
+      - name: Export static files
         run: npm run export
 
-      # Deploy the exported site to gh-pages branch
-      - name: Deploy to GitHub Pages (gh-pages branch)
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: new-trust-main/out
-          force_orphan: true
+          publish_dir: ./out
           cname: bharatsamarthatrust.com
