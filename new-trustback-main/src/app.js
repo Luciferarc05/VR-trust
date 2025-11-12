@@ -86,10 +86,15 @@ const legalsec = require('./routes/legal/legalsec.js')
 app.use(helmet());
 
 app.use(cors({
-  origin:'*',
+  origin: [
+    'https://www.vrtrust.org', 
+    'https://vrtrust.org',
+    'http://localhost:3000'
+  ],
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
 
 console.log("🚀 Backend server initialized...");
 app.use(express.json({ limit: '10mb' }));
