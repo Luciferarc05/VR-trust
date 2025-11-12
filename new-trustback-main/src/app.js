@@ -87,8 +87,8 @@ app.use(helmet());
 
 app.use(cors({
   origin: [
-    'https://www.vrtrust.org', 
-    'https://vrtrust.org',
+    'https://www.bharatsamarthatrust.com', 
+    'https://bharatsamarthatrust.com',
     'http://localhost:3000'
   ],
   credentials: true,
