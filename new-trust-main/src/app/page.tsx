@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 
 // API Configuration
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://www.vrtrust.org/api';
 
 // API service functions
 const apiService = {
