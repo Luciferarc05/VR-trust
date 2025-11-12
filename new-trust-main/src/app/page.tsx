@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 
 // API Configuration
-const API_BASE_URL = 'https://www.vrtrust.org/api';
+const API_BASE_URL = 'https://api.bharatsamarthatrust.com/api';
 
 // API service functions
 const apiService = {
